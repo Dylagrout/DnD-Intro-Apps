@@ -91,12 +91,15 @@
     margin-bottom: 1rem;
     animation: fadeUp 0.35s ease;
   }
-  .result-main {
+.result-main {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 12px;
   margin-bottom: 1rem;
+}
+.result-title-group {
+  width: 100%;
 }
 
 .result-header {
@@ -115,6 +118,7 @@
   height: auto;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 
 .result-class {
@@ -146,7 +150,11 @@
 
   .alt-section { margin-top: 1rem; }
   .alt-title { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
-  .alt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .alt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
   .alt-card {
     background: var(--surface2);
     border: 1px solid black;
@@ -174,6 +182,46 @@
     transition: background 0.15s;
     margin-top: 8px;
   }
+  @media (max-width: 600px) {
+  #app {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .options {
+    grid-template-columns: 1fr;
+  }
+
+  .alt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-card {
+    padding: 1rem;
+  }
+
+  .result-class {
+    font-size: 20px;
+  }
+
+  .result-subclass {
+    font-size: 13px;
+  }
+
+  .result-tagline {
+    font-size: 12px;
+  }
+
+  .result-desc {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .restart-btn,
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
   .restart-btn:hover { background: var(--surface); border-color: var(--gold); }
 
   .path-display {
