@@ -1,0 +1,154 @@
+:root {
+  --gold: #BA7517;
+  --gold-light: #FAEEDA;
+  --gold-mid: #FAC775;
+
+  --ink: #1f1f1f;
+  --muted: #666666;
+  --surface: #ffffff;
+  --surface2: #f7f7f7;
+  --border: #d0d0d0;
+  --border2: #b8b8b8;
+
+  --rad: 16px;
+  --rad-sm: 10px;
+
+  --font-sans: Arial, Helvetica, sans-serif;
+
+  --color-text-primary: #1f1f1f;
+  --color-text-secondary: #666666;
+  --color-text-info: #245ea8;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f7f7f7;
+  --color-border-tertiary: #d0d0d0;
+  --color-border-secondary: #b8b8b8;
+  --color-border-info: #245ea8;
+}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  #app { padding: 1.5rem 1rem 2rem; font-family: var(--font-sans); max-width: 640px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 1.5rem; }
+  .header h2 { font-size: 18px; font-weight: 500; color: var(--ink); }
+  .header p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  .progress-bar { width: 100%; height: 4px; background: var(--surface2); border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+
+  .question-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: var(--rad);
+    padding: 1.25rem 1.25rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .q-step { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .q-icon,
+.result-icon {
+  font-family: system-ui, "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+}
+  .q-text { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+  .q-sub { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .options.solo { grid-template-columns: 1fr; }
+
+  .opt-btn {
+    background: var(--surface);
+    border: 2px solid black;
+    border-radius: var(--rad-sm);
+    padding: 12px 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+  .opt-btn:hover { border-color: var(--gold); background: var(--surface2); transform: translateY(-1px); }
+  .opt-btn:active { transform: scale(0.98); }
+  .opt-label { font-size: 13px; font-weight: 500; color: var(--ink); display: block; line-height: 1.3; }
+  .opt-desc { font-size: 11px; color: var(--muted); margin-top: 3px; display: block; line-height: 1.4; }
+
+  .back-btn {
+    background: none;
+    border: 0.5px solid var(--border);
+    border-radius: var(--rad-sm);
+    padding: 7px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: border-color 0.15s, color 0.15s;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .back-btn:hover { border-color: var(--border2); color: var(--ink); }
+
+  .result-card {
+    background: var(--surface);
+    border: 2px solid var(--color-border-info);
+    border-radius: var(--rad);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.35s ease;
+  }
+  .result-main { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 1rem; }
+  .result-icon { font-size: 2.5rem; line-height: 1; flex-shrink: 0; }
+  .result-icon-img {width: 256px; height: 256px; object-fit: contain; flex-shrink: 0; display: block;}
+  .result-class { font-size: 22px; font-weight: 500; color: var(--ink); }
+  .result-subclass { font-size: 14px; color: var(--color-text-info); margin-top: 2px; font-weight: 500; }
+  .result-tagline { font-size: 13px; color: var(--muted); margin-top: 4px; font-style: italic; }
+
+  .result-section { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid var(--border); }
+  .result-section-title { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .result-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.65; }
+
+  .trait-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .pill { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid gray; color: var(--color-text-secondary); background: var(--surface2); }
+
+  .alt-section { margin-top: 1rem; }
+  .alt-title { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .alt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .alt-card {
+    background: var(--surface2);
+    border: 1px solid black;
+    border-radius: var(--rad-sm);
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .alt-card:hover { border-color: var(--gold); background: var(--surface); }
+  .alt-class { font-size: 12px; font-weight: 500; color: var(--ink); }
+  .alt-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .restart-btn {
+    background: var(--surface2);
+    border: 0.5px solid var(--border2);
+    border-radius: var(--rad-sm);
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    width: 100%;
+    text-align: center;
+    transition: background 0.15s;
+    margin-top: 8px;
+  }
+  .restart-btn:hover { background: var(--surface); border-color: var(--gold); }
+
+  .path-display {
+    display: flex; flex-wrap: wrap; gap: 4px; align-items: center;
+    margin-bottom: 1rem; padding: 8px 12px;
+    background: var(--surface2); border-radius: var(--rad-sm);
+    border: 0.5px solid var(--border);
+    min-height: 36px;
+  }
+  .path-crumb { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+  .path-crumb-label { color: var(--color-text-secondary); font-weight: 500; }
+  .path-sep { opacity: 0.4; }
+  .path-empty { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @keyframes slideIn { from { opacity:0; transform:translateX(10px); } to { opacity:1; transform:none; } }
+  .q-anim { animation: slideIn 0.25s ease; }
