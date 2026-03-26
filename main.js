@@ -162,23 +162,33 @@ function showResult(key) {
   document.getElementById('prog').style.width = '100%';
   updatePath();
 
-  const iconHtml = r.iconType === "image"
-  ? `<img class="result-icon-img" src="${r.icon}" alt="${r.sub} icon">`
+const iconHtml = r.iconType === "image"
+  ? `<img class="result-icon-img" src="${r.icon}" alt="${r.sub} ${r.cls} image">`
   : `<div class="result-icon">${r.icon}</div>`;
 
-  const altsHtml = r.alts ? `
-    <div class="alt-section">
-      <div class="alt-title">You might also enjoy</div>
-      <div class="alt-grid">
-        ${r.alts.map(a => `
-          <div class="alt-card" onclick="goToResult('${a.key}')">
-            <div class="alt-class">${a.l}</div>
-            <div class="alt-sub">${a.sl}</div>
-          </div>
-        `).join('')}
+document.getElementById('content').innerHTML = `
+  <div class="result-card">
+    <div class="result-main">
+      <div class="result-header">
+        <div class="result-class">${r.cls}</div>
+        <div class="result-subclass">${r.sub}</div>
+        <div class="result-tagline">"${r.tagline}"</div>
       </div>
-    </div>` : '';
 
+      <div class="result-image-wrap">
+        ${iconHtml}
+      </div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-title">Why this fits you</div>
+      <div class="result-desc">${r.desc}</div>
+      <div class="trait-pills">
+        ${r.traits.map(t => `<span class="pill">${t}</span>`).join('')}
+      </div>
+    </div>
+  </div>
+`;
   document.getElementById('content').innerHTML = `
     <div class="result-card">
       <div class="result-main">
