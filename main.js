@@ -19,7 +19,7 @@ const questions = [
   { id:"bard_sub", icon:"🎶", text:"What flavor of Bard?", sub:"You're a magical performer — what's your act?", options:[{label:"Lore",desc:"Know everything, learn any spell",value:"Lore Bard"},{label:"Glamour",desc:"Enchanting performer, fey magic",value:"Glamour Bard"},{label:"Valor",desc:"Fighting bard with sword and song",value:"Valor Bard"}] },
   { id:"flex_fighter_choice", icon:"⚡", text:"What's your preferred tool?", options:[{ label: "Support and divine intervention", desc: "Faithful acolyte — Cleric", value: "cleric_sub"}, {label:"Weapons, oath, and healing",desc:"Holy knight — Paladin",value:"paladin_sub"},{label:"Bow, nature, and tracking",desc:"Wilderness hunter — Ranger",value:"ranger_sub"}] },
   { id:"stealth_magic", icon:"🌑", text:"Do you want any magic?", sub:"You're a shadow-dweller — but what tools do you use?", options:[{label:"No magic",desc:"Pure skill, stealth, and cunning",value:"rogue_sub"},{label:"A little magic",desc:"Tricks and illusions to aid the shadows",value:"Arcane Trickster Rogue"}] },
-  { id:"rogue_sub", icon:"🗡️", text:"What flavor of Rogue?", sub:"You're a master of stealth — what's your specialty?", options:[{label:"Thief",desc:"Classic burglar and infiltrator",value:"Thief Rogue"},{label:"Assassin",desc:"One strike — lethal first hit",value:"Assassin Rogue"},{label:"Swashbuckler",desc:"Dashing duelist, charming rogue",value:"Swashbuckler Rogue"},{label:"Arcane Trickster",desc:"Spells mixed with stealth",value:"Arcane Trickster Rogue"}] }
+  { id:"rogue_sub", icon:"🗡️", text:"What flavor of Rogue?", sub:"You're a master of stealth — what's your specialty?", options:[{label:"Thief",desc:"Classic burglar and infiltrator",value:"Thief Rogue"},{label:"Assassin",desc:"One strike — lethal first hit",value:"Assassin Rogue"},{label:"Swashbuckler",desc:"Dashing duelist, charming rogue",value:"Swashbuckler Rogue"}] }
 ];
 
 const results = {
@@ -166,38 +166,29 @@ const iconHtml = r.iconType === "image"
   ? `<img class="result-icon-img" src="${r.icon}" alt="${r.sub} ${r.cls} image">`
   : `<div class="result-icon">${r.icon}</div>`;
 
-document.getElementById('content').innerHTML = `
-  <div class="result-card">
-    <div class="result-main">
-      <div class="result-header">
-        <div class="result-class">${r.cls}</div>
-        <div class="result-subclass">${r.sub}</div>
-        <div class="result-tagline">"${r.tagline}"</div>
+  const altsHtml = r.alts ? `
+    <div class="alt-section">
+      <div class="alt-title">You might also enjoy</div>
+      <div class="alt-grid">
+        ${r.alts.map(a => `
+          <div class="alt-card" onclick="goToResult('${a.key}')">
+            <div class="alt-class">${a.l}</div>
+            <div class="alt-sub">${a.sl}</div>
+          </div>
+        `).join('')}
       </div>
+    </div>` : '';
 
-      <div class="result-image-wrap">
-        ${iconHtml}
-      </div>
-    </div>
-
-    <div class="result-section">
-      <div class="result-section-title">Why this fits you</div>
-      <div class="result-desc">${r.desc}</div>
-      <div class="trait-pills">
-        ${r.traits.map(t => `<span class="pill">${t}</span>`).join('')}
-      </div>
-    </div>
-  </div>
-`;
   document.getElementById('content').innerHTML = `
     <div class="result-card">
       <div class="result-main">
-        ${iconHtml}
-        <div class="result-title-group">
+        <div class="result-header">
           <div class="result-class">${r.cls}</div>
           <div class="result-subclass">${r.sub}</div>
           <div class="result-tagline">"${r.tagline}"</div>
-        </div>
+      <div class="result-image-wrap">
+        ${iconHtml}
+      </div>
       </div>
       <div class="trait-pills">${r.traits.map(t => `<span class="pill">${t}</span>`).join('')}</div>
       <div class="result-section">
